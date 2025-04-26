@@ -39,7 +39,7 @@ const SequenceInfo = ({ sequence }: Props) => {
                     {fields.map((field, index) => (
                         <li
                             key={index}
-                            className="flex justify-between p-2 border-b"
+                            className="flex justify-between p-2 border-b text-sm"
                         >
                             <span className="font-semibold">
                                 {field.label}:
