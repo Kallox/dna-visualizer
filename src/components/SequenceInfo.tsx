@@ -21,14 +21,30 @@ const SequenceInfo = ({ sequence }: Props) => {
 
     const fields = [
         { label: "Sequence Length", value: `${sequenceLength} bases` },
-        { label: "GC Content", value: `${gcContent.toFixed(2)}%` },
+        {
+            label: "GC Content",
+            value: `${gcContent.toFixed(2)}%`,
+            help: "GC content refers to the percentage of guanine (G) and cytosine (C) bases in a DNA or RNA molecule. It influences the stability and structure of the nucleic acid.",
+        },
         { label: "A Bases", value: baseCounts.A },
         { label: "T Bases", value: baseCounts.T },
         { label: "G Bases", value: baseCounts.G },
         { label: "C Bases", value: baseCounts.C },
-        { label: "Total Amino Acids", value: totalAminoAcids },
-        { label: "Start Codons", value: startCodonsCount },
-        { label: "End Codons", value: endCodonsCount },
+        {
+            label: "Total Amino Acids",
+            value: totalAminoAcids,
+            help: "The estimated number of amino acids that can be encoded by the given sequence.",
+        },
+        {
+            label: "Start Codons",
+            value: startCodonsCount,
+            help: "Start codons are specific sequences in mRNA that signal the start of translation. The most common start codon is AUG.",
+        },
+        {
+            label: "End Codons",
+            value: endCodonsCount,
+            help: "End codons (or stop codons) are sequences in mRNA that signal the termination of translation. Common end codons include UAA, UAG, and UGA.",
+        },
     ];
 
     return (
@@ -41,8 +57,16 @@ const SequenceInfo = ({ sequence }: Props) => {
                             key={index}
                             className="flex justify-between p-2 border-b text-sm"
                         >
-                            <span className="font-semibold">
+                            <span className="font-semibold flex gap-1">
                                 {field.label}:
+                                {field.help && (
+                                    <span
+                                        className="flex items-center justify-center w-3 h-3 rounded-full bg-black text-white text-xs cursor-pointer hover:bg-gray-700"
+                                        title={field.help}
+                                    >
+                                        ?
+                                    </span>
+                                )}
                             </span>
                             <span>{field.value}</span>
                         </li>
