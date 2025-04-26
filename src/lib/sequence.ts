@@ -1,3 +1,5 @@
+import { codonTable } from "./codonTable";
+
 export function getSequenceLength(sequence: string): number {
     return sequence.length;
 }
@@ -43,4 +45,9 @@ export function countEndCodons(sequence: string): number {
         }
     }
     return count;
+}
+
+export function translateToAminoAcids(codon: string): string {
+    const aminoAcid = codonTable[codon];
+    return aminoAcid ? aminoAcid : "Unknown";
 }
