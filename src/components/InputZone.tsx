@@ -35,7 +35,7 @@ const InputZone = ({ onButtonClick }: Props) => {
                 maxLength={maxLength}
             ></textarea>
             <button
-                className="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
+                className="w-full p-2 cursor-pointer bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
                 onClick={() => onButtonClick(inputValue)}
             >
                 Visualize
