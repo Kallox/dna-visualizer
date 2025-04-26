@@ -1,3 +1,5 @@
+import SequenceInfo from "./SequenceInfo";
+
 type Props = {
     sequence: string;
 };
@@ -9,7 +11,7 @@ const DataVisualizationZone = ({ sequence }: Props) => {
                 Sequence view
             </div>
             <div className="col-span-1 bg-white p-8 rounded-lg shadow-md">
-                Sequence info
+                <SequenceInfo sequence={sequence} />
             </div>
         </div>
     );
