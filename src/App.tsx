@@ -11,10 +11,32 @@ function App() {
 
     return (
         <div>
-            <header className="p-8 border-b-1 bg-gray-100">
+            <header className="flex justify-between p-8 border-b-1 bg-gray-100 align-middle">
+                <div></div>
                 <h1 className="text-3xl font-bold underline text-center">
                     DNA Visualizer
                 </h1>
+                <nav className="flex items-center gap-4">
+                    <ul>
+                        <li>
+                            <a
+                                className="flex items-center gap-2 rounded-md p-2 bg-gray-200 hover:bg-gray-300 transition duration-200"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="https://github.com/Kallox/dna-visualizer"
+                            >
+                                <img
+                                    src="/github.png"
+                                    width={24}
+                                    alt="Github icon"
+                                />
+                                <span className="font-semibold hidden sm:block">
+                                    GitHub
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </header>
             <main className="flex flex-col gap-8 items-center min-h-screen bg-gray-100 p-8">
                 <InputZone onButtonClick={handleSequenceChange} />
