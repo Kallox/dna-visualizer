@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DataVisualizationZone from "./components/DataVisualizationZone";
 import InputZone from "./components/InputZone";
 
 function App() {
@@ -6,7 +7,6 @@ function App() {
 
     const handleSequenceChange = (newSequence: string) => {
         setSequence(newSequence);
-        console.log("New sequence:", sequence);
     };
 
     return (
@@ -16,8 +16,9 @@ function App() {
                     DNA Visualizer
                 </h1>
             </header>
-            <main className="flex flex-col items-center min-h-screen bg-gray-100 p-8">
+            <main className="flex flex-col gap-8 items-center min-h-screen bg-gray-100 p-8">
                 <InputZone onButtonClick={handleSequenceChange} />
+                <DataVisualizationZone sequence={sequence} />
             </main>
         </div>
     );
