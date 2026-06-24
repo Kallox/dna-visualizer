@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen;
+    }
+}
+
+@layer components {
+    .dna-card {
+        @apply bg-white rounded-xl shadow-sm border border-gray-100 transition-shadow duration-200;
+    }
+
+    .dna-card:hover {
+        @apply shadow-md;
+    }
+
+    .dna-header-gradient {
+        background: linear-gradient(135deg, #1a365d 0%, #2d4a7a 50%, #1a365d 100%);
+    }
+}

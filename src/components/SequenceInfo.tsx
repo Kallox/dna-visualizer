@@ -24,12 +24,13 @@ const SequenceInfo = ({ sequence }: Props) => {
         {
             label: "GC Content",
             value: `${gcContent.toFixed(2)}%`,
+            color: "text-purple-600 font-bold",
             help: "GC content refers to the percentage of guanine (G) and cytosine (C) bases in a DNA or RNA molecule. It influences the stability and structure of the nucleic acid.",
         },
-        { label: "A Bases", value: baseCounts.A },
-        { label: "T Bases", value: baseCounts.T },
-        { label: "G Bases", value: baseCounts.G },
-        { label: "C Bases", value: baseCounts.C },
+        { label: "A Bases", value: baseCounts.A, dot: "bg-green-500" },
+        { label: "T Bases", value: baseCounts.T, dot: "bg-red-500" },
+        { label: "G Bases", value: baseCounts.G, dot: "bg-amber-500" },
+        { label: "C Bases", value: baseCounts.C, dot: "bg-blue-500" },
         {
             label: "Total Amino Acids",
             value: totalAminoAcids,
@@ -38,11 +39,13 @@ const SequenceInfo = ({ sequence }: Props) => {
         {
             label: "Start Codons",
             value: startCodonsCount,
+            color: "text-green-600 font-semibold",
             help: "Start codons are specific sequences in mRNA that signal the start of translation. The most common start codon is AUG.",
         },
         {
             label: "End Codons",
             value: endCodonsCount,
+            color: "text-red-600 font-semibold",
             help: "End codons (or stop codons) are sequences in mRNA that signal the termination of translation. Common end codons include UAA, UAG, and UGA.",
         },
     ];
@@ -55,20 +58,23 @@ const SequenceInfo = ({ sequence }: Props) => {
                     {fields.map((field, index) => (
                         <li
                             key={index}
-                            className="flex justify-between p-2 border-b text-sm"
+                            className="flex justify-between items-center p-2 border-b text-sm hover:bg-gray-50 transition-colors"
                         >
-                            <span className="font-semibold flex gap-1">
+                            <span className="font-semibold flex gap-1 items-center">
+                                {field.dot && (
+                                    <span className={`inline-block w-2.5 h-2.5 rounded-full ${field.dot} flex-shrink-0`}></span>
+                                )}
                                 {field.label}:
                                 {field.help && (
                                     <span
-                                        className="flex items-center justify-center w-3 h-3 rounded-full bg-black text-white text-xs cursor-pointer hover:bg-gray-700"
+                                        className="flex items-center justify-center w-3.5 h-3.5 rounded-full bg-gray-400 text-white text-[10px] cursor-pointer hover:bg-gray-600 transition-colors"
                                         title={field.help}
                                     >
                                         ?
                                     </span>
                                 )}
                             </span>
-                            <span>{field.value}</span>
+                            <span className={field.color || "text-gray-800"}>{field.value}</span>
                         </li>
                     ))}
                 </ul>
