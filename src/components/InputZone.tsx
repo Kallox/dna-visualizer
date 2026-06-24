@@ -16,7 +16,7 @@ const InputZone = ({ onButtonClick }: Props) => {
             );
             return;
         }
-        setInputValue(value);
+        setInputValue(value.toUpperCase());
     };
 
     return (
