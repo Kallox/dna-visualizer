@@ -19,6 +19,16 @@ const InputZone = ({ onButtonClick }: Props) => {
         setInputValue(value.toUpperCase());
     };
 
+    const handleGenerateRandom = () => {
+        const bases = ["A", "T", "C", "G"];
+        const length = Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+        const randomSequence = Array.from(
+            { length },
+            () => bases[Math.floor(Math.random() * 4)]
+        ).join("");
+        setInputValue(randomSequence);
+    };
+
     return (
         <div className="dna-card flex flex-col gap-2 w-full max-w-4xl p-8">
             <div className="flex justify-between items-center">
@@ -35,7 +45,14 @@ const InputZone = ({ onButtonClick }: Props) => {
                 maxLength={maxLength}
                 spellCheck={false}
             ></textarea>
-            <div className="flex justify-end">
+            <div className="flex justify-end gap-3">
+                <button
+                    type="button"
+                    className="px-6 py-2.5 cursor-pointer bg-gray-100 hover:bg-gray-200 active:bg-gray-300 text-gray-700 rounded-lg font-semibold transition-all duration-200 shadow-sm"
+                    onClick={handleGenerateRandom}
+                >
+                    Random Sequence
+                </button>
                 <button
                     className="px-8 py-2.5 cursor-pointer bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 active:bg-blue-800 transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
                     onClick={() => onButtonClick(inputValue)}
